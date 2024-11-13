@@ -1,14 +1,11 @@
 const express = require('express');
+const { register, login, addStaffMember } = require('../controllers/authController');
+const { verifyToken, isAdmin } = require('../middleware/authMiddleware');
+
 const router = express.Router();
-const { registerUser, loginUser, getUserProfile } = require('../controllers/authController');
-const { protect } = require('../middleware/authMiddleware');
 
-// Register a new user
-router.post('/register', registerUser);
-
-// Login a user
-router.post('/login', loginUser);
-
-
+router.post('/register', register);
+router.post('/login', login);
+router.post('/add-staff', addStaffMember);
 
 module.exports = router;
